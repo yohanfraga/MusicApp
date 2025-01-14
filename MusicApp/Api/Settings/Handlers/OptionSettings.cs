@@ -1,7 +1,7 @@
 using Microsoft.Extensions.Options;
 using MusicApp.Domain.Options;
 
-namespace MusicApp.Api.Settings;
+namespace MusicApp.Api.Settings.Handlers;
 
 public static class OptionSettings
 {

@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using MusicApp.Domain.Options;
 using MusicApp.Infra.Context;
 
-namespace MusicApp.Api.Settings;
+namespace MusicApp.Api.Settings.Handlers;
 
 public static class DatabaseSettings
 {

@@ -25,6 +25,7 @@
       <Folder Include="Api\Controllers\" />
       <Folder Include="ApplicationService\Mappers\Interfaces\" />
       <Folder Include="ApplicationService\Services\Interfaces\" />
+      <Folder Include="Infra\Interfaces\" />
       <Folder Include="Infra\Repository\" />
     </ItemGroup>
 

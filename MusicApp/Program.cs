@@ -1,4 +1,5 @@
 using MusicApp.Api.Settings;
+using MusicApp.Api.Settings.Handlers;
 using MusicApp.Api.Settings.Ioc;
 
 var builder = WebApplication.CreateBuilder(args);
