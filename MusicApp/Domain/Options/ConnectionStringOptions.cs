@@ -1,4 +1,4 @@
-﻿namespace WebApplication1.Domain.Options;
+﻿namespace MusicApp.Domain.Options;
 public sealed class ConnectionStringOptions
 {
     public const string SectionName = "ConnectionStrings";

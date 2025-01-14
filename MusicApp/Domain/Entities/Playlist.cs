@@ -1,4 +1,4 @@
-namespace WebApplication1.Domain.Entities;
+namespace MusicApp.Domain.Entities;
 
 public class Playlist
 {
@@ -7,8 +7,8 @@ public class Playlist
     public string? Description { get; set; }
     public required DateTime CreateDate { get; init; }
     public int Duration { get; set; }
-    public bool Public { get; set; }
-    public List<Music> Musics { get; set; } = [];
+    public bool IsPublic { get; set; }
+    public List<PlaylistMusic> Musics { get; set; } = [];
 
     public required long UserId { get; init; }
     public User? User { get; init; }

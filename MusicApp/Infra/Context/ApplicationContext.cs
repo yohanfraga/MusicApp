@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace WebApplication1.Infra.Context;
+namespace MusicApp.Infra.Context;
 
 public sealed class ApplicationContext(
     DbContextOptions<ApplicationContext> dbContext) 

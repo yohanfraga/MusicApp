@@ -1,4 +1,4 @@
-namespace WebApplication1.Domain.Enums;
+namespace MusicApp.Domain.Enums;
 
 public enum EAlbumType
 {

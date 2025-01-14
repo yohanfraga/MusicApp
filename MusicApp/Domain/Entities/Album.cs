@@ -1,13 +1,13 @@
-using WebApplication1.Domain.Enums;
+using MusicApp.Domain.Enums;
 
-namespace WebApplication1.Domain.Entities;
+namespace MusicApp.Domain.Entities;
 
 public class Album
 {
     public long Id { get; init; }
-    public long Name { get; set; }
+    public required string Name { get; set; }
     public required int Duration { get; set; }
-    public bool Public { get; set; }
+    public bool IsPublic { get; set; }
     public EAlbumType Type { get; init; }
     public required DateTime ReleaseDate { get; set; }
     public List<Music> Musics { get; init; } = [];

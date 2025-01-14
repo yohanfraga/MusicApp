@@ -1,4 +1,4 @@
-namespace WebApplication1.Domain.Entities;
+namespace MusicApp.Domain.Entities;
 
 public class Artist
 {

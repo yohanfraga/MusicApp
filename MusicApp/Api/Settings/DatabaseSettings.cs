@@ -1,8 +1,8 @@
 using Microsoft.EntityFrameworkCore;
-using WebApplication1.Domain.Options;
-using WebApplication1.Infra.Context;
+using MusicApp.Domain.Options;
+using MusicApp.Infra.Context;
 
-namespace WebApplication1.Api.Settings;
+namespace MusicApp.Api.Settings;
 
 public static class DatabaseSettings
 {

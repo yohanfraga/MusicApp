@@ -1,6 +1,6 @@
-namespace WebApplication1.Domain.Entities;
+namespace MusicApp.Domain.Entities;
 
-public abstract class PlaylistFollow
+public class PlaylistFollow
 {
     public required long PlaylistId { get; set; }
     public required long UserId { get; set; }

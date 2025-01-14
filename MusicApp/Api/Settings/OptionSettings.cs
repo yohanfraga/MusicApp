@@ -1,7 +1,7 @@
 using Microsoft.Extensions.Options;
-using WebApplication1.Domain.Options;
+using MusicApp.Domain.Options;
 
-namespace WebApplication1.Api.Settings;
+namespace MusicApp.Api.Settings;
 
 public static class OptionSettings
 {

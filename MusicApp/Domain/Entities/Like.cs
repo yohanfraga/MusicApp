@@ -1,6 +1,6 @@
-namespace WebApplication1.Domain.Entities;
+namespace MusicApp.Domain.Entities;
 
-public abstract class Like
+public class Like
 {
     public required long MusicId { get; set; }
     public required long UserId { get; set; }

@@ -1,9 +1,9 @@
-using Microsoft.OpenApi.Validations.Rules;
 using FluentValidation;
+using MusicApp.Domain.Entities;
 
-namespace WebApplication1.Domain.EntitiesValidation;
+namespace MusicApp.Domain.EntitiesValidation;
 
-public class UserValidation 
+public class UserValidation : AbstractValidator<User>
 {
     public UserValidation()
     {
@@ -15,8 +15,6 @@ public class UserValidation
         RuleFor(u => u.Name)
             .NotEmpty()
             .Length(1, 150)
-            .WithMessage(a => !string.IsNullOrWhiteSpace(a.State)
-                ? "Name must be between {MinLength} a {MaxLength}"
-                : "Name is required");
+            .WithMessage("Name must be between {MinLength} a {MaxLength}");
     }
 }
