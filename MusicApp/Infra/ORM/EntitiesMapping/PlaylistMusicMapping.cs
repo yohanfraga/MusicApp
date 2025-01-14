@@ -23,6 +23,12 @@ public class PlaylistMusicMapping : BaseMapping, IEntityTypeConfiguration<Playli
             .HasColumnOrder(2)
             .IsRequired();
         
+        builder.Property(pm => pm.AddedDate)
+            .HasColumnType("datetime2")
+            .HasColumnName("added_date")
+            .HasColumnOrder(3)
+            .IsRequired();
+        
         builder.HasOne(pm => pm.Music)
             .WithMany(m => m.Playlists)
             .HasForeignKey(pm => pm.MusicId)
