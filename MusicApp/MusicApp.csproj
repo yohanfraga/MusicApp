@@ -23,9 +23,9 @@
 
     <ItemGroup>
       <Folder Include="Api\Controllers\" />
+      <Folder Include="ApplicationService\DTOs\" />
       <Folder Include="ApplicationService\Mappers\Interfaces\" />
       <Folder Include="ApplicationService\Services\Interfaces\" />
-      <Folder Include="Domain\Extensions\" />
     </ItemGroup>
 
 </Project>

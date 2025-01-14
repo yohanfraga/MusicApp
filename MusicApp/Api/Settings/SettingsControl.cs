@@ -8,6 +8,7 @@ public static class SettingsControl
     {
         services.AddOptionSettings(configuration);
         services.AddControllersSettings();
+        services.AddFiltersSettings();
         services.AddDatabaseSettings();
     }
 }
