@@ -1,0 +1,185 @@
+{
+  "version": 3,
+  "targets": {
+    "net8.0": {
+      "xunit/1.9.2": {
+        "type": "package",
+        "compile": {
+          "lib/net20/xunit.dll": {
+            "related": ".dll.tdnet;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net20/xunit.dll": {
+            "related": ".dll.tdnet;.xml"
+          }
+        }
+      },
+      "XUnit.V8/1.0.0": {
+        "type": "package",
+        "dependencies": {
+          "xunit": "1.9.2"
+        },
+        "compile": {
+          "lib/net40/XUnit.V8.dll": {},
+          "lib/net40/xUnit.V8.Contracts.dll": {}
+        },
+        "runtime": {
+          "lib/net40/XUnit.V8.dll": {},
+          "lib/net40/xUnit.V8.Contracts.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "xunit/1.9.2": {
+      "sha512": "c1wppJtYPUGPHVP9U1wjmfii4553MuQSXkAt8rudkXW+eUFJxOOfDvhBJ6S0YHHDMFEJwiMN770AT4Lno8EBpw==",
+      "type": "package",
+      "path": "xunit/1.9.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net20/xunit.dll",
+        "lib/net20/xunit.dll.tdnet",
+        "lib/net20/xunit.runner.msbuild.dll",
+        "lib/net20/xunit.runner.tdnet.dll",
+        "lib/net20/xunit.runner.utility.dll",
+        "lib/net20/xunit.xml",
+        "xunit.1.9.2.nupkg.sha512",
+        "xunit.nuspec"
+      ]
+    },
+    "XUnit.V8/1.0.0": {
+      "sha512": "+U1nWWXX+fIteGPOfIifY3V9GW72/zVO7mJ888B5Qbvjzqz0IhxrfqNCzc8lrvpS7+WmP5q923DsPcM3W9nwgg==",
+      "type": "package",
+      "path": "xunit.v8/1.0.0",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "content/Scripts/assert.js",
+        "content/Scripts/browser.js",
+        "content/Scripts/jshamcrest.js",
+        "content/Scripts/json.js",
+        "content/Scripts/matchers.js",
+        "content/Scripts/require.js",
+        "content/Scripts/requireNativeLoad.js",
+        "content/net40/x64/Noesis.Javascript.dll",
+        "content/net40/x64/msvcp100.dll",
+        "content/net40/x64/msvcr100.dll",
+        "content/net40/x64/xUnit.V8.Noesis.Proxy.x64.dll",
+        "content/net40/x86/Noesis.Javascript.dll",
+        "content/net40/x86/msvcp100.dll",
+        "content/net40/x86/msvcr100.dll",
+        "content/net40/x86/xUnit.V8.Noesis.Proxy.x86.dll",
+        "content/x64/Noesis.Javascript.dll",
+        "content/x64/msvcp100.dll",
+        "content/x64/msvcr100.dll",
+        "content/x64/xUnit.V8.Noesis.Proxy.x64.dll",
+        "content/x86/Noesis.Javascript.dll",
+        "content/x86/msvcp100.dll",
+        "content/x86/msvcr100.dll",
+        "content/x86/xUnit.V8.Noesis.Proxy.x86.dll",
+        "lib/net40/XUnit.V8.dll",
+        "lib/net40/xUnit.V8.Contracts.dll",
+        "tools/Install.ps1",
+        "xunit.v8.1.0.0.nupkg.sha512",
+        "xunit.v8.nuspec"
+      ]
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net8.0": [
+      "XUnit.V8 >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\X-Bits Software\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\X-Bits Software\\Desktop\\MusicApp\\UnitTests\\UnitTests.csproj",
+      "projectName": "UnitTests",
+      "projectPath": "C:\\Users\\X-Bits Software\\Desktop\\MusicApp\\UnitTests\\UnitTests.csproj",
+      "packagesPath": "C:\\Users\\X-Bits Software\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\X-Bits Software\\Desktop\\MusicApp\\UnitTests\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\X-Bits Software\\AppData\\Roaming\\NuGet\\NuGet.Config"
+      ],
+      "originalTargetFrameworks": [
+        "net8.0"
+      ],
+      "sources": {
+        "C:\\Users\\X-Bits Software\\.dotnet\\library-packs": {},
+        "C:\\Users\\X-Bits Software\\RiderProjects\\eTrack.Global\\NuGet Packages": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "projectReferences": {}
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net8.0": {
+        "targetAlias": "net8.0",
+        "dependencies": {
+          "XUnit.V8": {
+            "target": "Package",
+            "version": "[1.0.0, )"
+          }
+        },
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.AspNetCore.App": {
+            "privateAssets": "none"
+          },
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Users\\X-Bits Software\\.dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
+      }
+    }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'xunit 1.9.2' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net8.0'. This package may not be fully compatible with your project.",
+      "libraryId": "xunit",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'XUnit.V8 1.0.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net8.0'. This package may not be fully compatible with your project.",
+      "libraryId": "XUnit.V8",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    }
+  ]
+}
