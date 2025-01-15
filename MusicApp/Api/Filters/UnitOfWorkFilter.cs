@@ -1,16 +1,15 @@
 ﻿using Microsoft.AspNetCore.Mvc.Filters;
-using MusicApp.Domain.Interfaces;
+using MusicApp.Api.Extensions;
+using MusicApp.Infra.ORM.UnitOfWork.Interfaces;
 
 namespace MusicApp.Api.Filters;
 
 public sealed class  UnitOfWorkFilter(IUnitOfWork unitOfWork)
     : ActionFilterAttribute
 {
-    private const string MethodGet = "GET";
-    
     public override void OnActionExecuted(ActionExecutedContext actionExecuted)
     {
-        if (IsMethodGet(actionExecuted)) return;
+        if (actionExecuted.IsMethodGet()) return;
         
         if (Success(actionExecuted))
             unitOfWork.Commit();
@@ -22,7 +21,7 @@ public sealed class  UnitOfWorkFilter(IUnitOfWork unitOfWork)
 
     public override void OnActionExecuting(ActionExecutingContext actionExecuted)
     {
-        if (IsMethodGet(actionExecuted)) return;
+        if (actionExecuted.IsMethodGet()) return;
 
         unitOfWork.Begin();
 
@@ -31,6 +30,4 @@ public sealed class  UnitOfWorkFilter(IUnitOfWork unitOfWork)
         
     private static bool Success(ActionExecutedContext actionExecuted) =>
         actionExecuted.Exception is null && actionExecuted.ModelState.IsValid;
-    
-    private static bool IsMethodGet(FilterContext context) => context.HttpContext.Request.Method == MethodGet;
 }

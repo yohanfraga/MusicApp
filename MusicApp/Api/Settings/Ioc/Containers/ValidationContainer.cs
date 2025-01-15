@@ -1,16 +1,15 @@
 using MusicApp.Domain.Entities;
 using MusicApp.Domain.EntitiesValidation;
-using MusicApp.Domain.Handler.Validation;
+using MusicApp.Domain.Handler.Validation.Interface;
 
 namespace MusicApp.Api.Settings.Ioc.Containers;
 
 public static class ValidationContainer
 {
-    public static void AddValidationContainer(this IServiceCollection services)
-    {
-        services.AddScoped<Validate<Album>, AlbumValidation>();
-        services.AddScoped<Validate<Artist>, ArtistValidation>();
-        services.AddScoped<Validate<Playlist>, PlaylistValidation>();
-        services.AddScoped<Validate<User>, UserValidation>();
-    }
+    public static IServiceCollection AddValidationContainer(this IServiceCollection services) =>
+        services
+            .AddScoped<IValidate<Album>, AlbumValidation>()
+            .AddScoped<IValidate<Artist>, ArtistValidation>()
+            .AddScoped<IValidate<Playlist>, PlaylistValidation>()
+            .AddScoped<IValidate<User>, UserValidation>();
 }

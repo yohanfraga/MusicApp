@@ -1,4 +1,4 @@
-namespace MusicApp.Domain.Interfaces;
+namespace MusicApp.Infra.ORM.UnitOfWork.Interfaces;
 
 public interface IUnitOfWork
 {

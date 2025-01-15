@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Infrastructure;
-using MusicApp.Domain.Interfaces;
 using MusicApp.Infra.Context;
+using MusicApp.Infra.ORM.UnitOfWork.Interfaces;
 
 namespace MusicApp.Infra.ORM.UnitOfWork;
 

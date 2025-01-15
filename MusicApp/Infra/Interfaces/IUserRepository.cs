@@ -4,7 +4,7 @@ using MusicApp.Domain.Entities;
 
 namespace MusicApp.Infra.Interfaces;
 
-public interface IUserRepository
+public interface IUserRepository : IDisposable
 {
     Task<bool> SaveAsync(User user);
     Task<bool> UpdateAsync(User user);
