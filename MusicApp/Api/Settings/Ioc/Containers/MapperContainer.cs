@@ -1,3 +1,4 @@
+using MusicApp.ApplicationService.Mappers;
 using MusicApp.ApplicationService.Mappers.Interfaces;
 
 namespace MusicApp.Api.Settings.Ioc.Containers;

@@ -1,7 +1,8 @@
 using MusicApp.ApplicationService.DTOs.UserDtos.Request;
+using MusicApp.ApplicationService.Mappers.Interfaces;
 using MusicApp.Domain.Entities;
 
-namespace MusicApp.ApplicationService.Mappers.Interfaces;
+namespace MusicApp.ApplicationService.Mappers;
 
 public sealed class UserMapper : IUserMapper
 {
