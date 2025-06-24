@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "E7+NckL/R7UrafNHu5qW+pdgWpz0evU909HdwH5HZzY0WfL3eaiYjK/geJzaBun3zQ0hBTlNsjmlIo8PQDCQ5g==",
+  "dgSpecHash": "RekG2xULTpU=",
   "success": true,
   "projectFilePath": "C:\\Users\\X-Bits Software\\Desktop\\MusicApp\\MusicApp\\MusicApp.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\X-Bits Software\\.nuget\\packages\\asyncapi.net\\6.0.0-beta.109\\asyncapi.net.6.0.0-beta.109.nupkg.sha512",
     "C:\\Users\\X-Bits Software\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\X-Bits Software\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",
     "C:\\Users\\X-Bits Software\\.nuget\\packages\\fluentvalidation\\12.0.0-preview1\\fluentvalidation.12.0.0-preview1.nupkg.sha512",
@@ -92,7 +93,11 @@
     "C:\\Users\\X-Bits Software\\.nuget\\packages\\system.text.json\\9.0.0\\system.text.json.9.0.0.nupkg.sha512",
     "C:\\Users\\X-Bits Software\\.nuget\\packages\\system.threading.channels\\7.0.0\\system.threading.channels.7.0.0.nupkg.sha512",
     "C:\\Users\\X-Bits Software\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
-    "C:\\Users\\X-Bits Software\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512"
+    "C:\\Users\\X-Bits Software\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512",
+    "C:\\Users\\X-Bits Software\\.nuget\\packages\\microsoft.netcore.app.ref\\8.0.15\\microsoft.netcore.app.ref.8.0.15.nupkg.sha512",
+    "C:\\Users\\X-Bits Software\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\8.0.15\\microsoft.windowsdesktop.app.ref.8.0.15.nupkg.sha512",
+    "C:\\Users\\X-Bits Software\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\8.0.15\\microsoft.aspnetcore.app.ref.8.0.15.nupkg.sha512",
+    "C:\\Users\\X-Bits Software\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\8.0.15\\microsoft.netcore.app.host.win-x64.8.0.15.nupkg.sha512"
   ],
   "logs": []
 }

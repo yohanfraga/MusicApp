@@ -258,3 +258,4 @@ C:\Users\X-Bits Software\Desktop\MusicApp\MusicApp\bin\Debug\net8.0\tr\Microsoft
 C:\Users\X-Bits Software\Desktop\MusicApp\MusicApp\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 C:\Users\X-Bits Software\Desktop\MusicApp\MusicApp\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 C:\Users\X-Bits Software\Desktop\MusicApp\MusicApp\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.Design.dll
+C:\Users\X-Bits Software\Desktop\MusicApp\MusicApp\bin\Debug\net8.0\LEGO.AsyncAPI.dll

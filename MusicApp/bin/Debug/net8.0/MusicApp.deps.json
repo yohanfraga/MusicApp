@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v8.0": {
       "MusicApp/1.0.0": {
         "dependencies": {
+          "AsyncAPI.NET": "6.0.0-beta.109",
           "FluentValidation": "12.0.0-preview1",
           "Microsoft.AspNetCore.OpenApi": "8.0.7",
           "Microsoft.EntityFrameworkCore": "9.0.0",
@@ -19,6 +20,14 @@
         },
         "runtime": {
           "MusicApp.dll": {}
+        }
+      },
+      "AsyncAPI.NET/6.0.0-beta.109": {
+        "runtime": {
+          "lib/net8.0/LEGO.AsyncAPI.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "Azure.Core/1.38.0": {
@@ -1130,6 +1139,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "AsyncAPI.NET/6.0.0-beta.109": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-OtnmLk9M4+w4heDOO2ORXqvKQ35vV90US7q4SdYnzjBbEF4tzIuhOxSuC2ifW7esh0qxGLhUXRTQbr+u3jS7/Q==",
+      "path": "asyncapi.net/6.0.0-beta.109",
+      "hashPath": "asyncapi.net.6.0.0-beta.109.nupkg.sha512"
     },
     "Azure.Core/1.38.0": {
       "type": "package",

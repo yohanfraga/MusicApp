@@ -14,11 +14,12 @@ public class LikeMapping : BaseMapping, IEntityTypeConfiguration<Like>
 
         builder.Property(l => l.MusicId)
             .HasColumnType("bigint")
-            .HasColumnName("Music_id")
-            .HasColumnOrder(1);
+            .HasColumnName("music_id")
+            .HasColumnOrder(1)
+            .IsRequired();
         
         builder.Property(l => l.UserId)
-            .HasColumnType("bigint")
+            .HasColumnType("uniqueidentifier")
             .HasColumnName("user_id")
             .HasColumnOrder(2)
             .IsRequired();
@@ -28,15 +29,5 @@ public class LikeMapping : BaseMapping, IEntityTypeConfiguration<Like>
             .HasColumnName("like_date")
             .HasColumnOrder(3)
             .IsRequired();
-        
-        builder.HasOne(l => l.Music)
-            .WithMany(m => m.Likes)
-            .HasForeignKey(l => l.MusicId)
-            .OnDelete(DeleteBehavior.NoAction);
-
-        builder.HasOne(l => l.User)
-            .WithMany(u => u.Likes)
-            .HasForeignKey(l => l.UserId)
-            .OnDelete(DeleteBehavior.NoAction);
     }
 }

@@ -10,8 +10,12 @@ public class Album
     public bool IsPublic { get; set; }
     public EAlbumType Type { get; init; }
     public required DateTime ReleaseDate { get; set; }
-    public List<Music> Musics { get; init; } = [];
     
     public required long ArtistId { get; init; }
     public Artist? Artist { get; init; }
+
+    public long? ImageId { get; set; }
+    public Image? Image { get; set; }
+
+    public List<Music>? Musics { get; init; }
 }

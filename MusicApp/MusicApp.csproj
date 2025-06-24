@@ -5,9 +5,11 @@
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <RootNamespace>MusicApp</RootNamespace>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="AsyncAPI.NET" Version="6.0.0-beta.109" />
         <PackageReference Include="FluentValidation" Version="12.0.0-preview1" />
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.7"/>
         <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.0" />
@@ -23,6 +25,12 @@
 
     <ItemGroup>
       <Folder Include="ApplicationService\DTOs\UserDtos\Response\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Include="..\.dockerignore">
+        <Link>.dockerignore</Link>
+      </Content>
     </ItemGroup>
 
 </Project>

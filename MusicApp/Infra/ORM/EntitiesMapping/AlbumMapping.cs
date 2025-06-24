@@ -15,12 +15,15 @@ public class AlbumMapping : BaseMapping, IEntityTypeConfiguration<Album>
         builder.Property(a => a.Id)
             .HasColumnType("bigint")
             .HasColumnName("id")
-            .HasColumnOrder(1);
+            .ValueGeneratedOnAdd()
+            .HasColumnOrder(1)
+            .IsRequired();
         
         builder.Property(a => a.Name)
-            .HasColumnType("varchar(200)")
+            .HasColumnType("nvarchar(255)")
             .HasColumnName("name")
             .HasColumnOrder(2)
+            .IsUnicode()
             .IsRequired();
         
         builder.Property(a => a.Duration)
@@ -32,12 +35,14 @@ public class AlbumMapping : BaseMapping, IEntityTypeConfiguration<Album>
         builder.Property(a => a.IsPublic)
             .HasColumnType("bit")
             .HasColumnName("is_public")
-            .HasColumnOrder(4);
+            .HasColumnOrder(4)
+            .IsRequired();
         
         builder.Property(a => a.Type)
             .HasColumnType("int")
             .HasColumnName("type")
-            .HasColumnOrder(5);
+            .HasColumnOrder(5)
+            .IsRequired();
         
         builder.Property(a => a.ReleaseDate)
             .HasColumnType("datetime2")
@@ -51,14 +56,20 @@ public class AlbumMapping : BaseMapping, IEntityTypeConfiguration<Album>
             .HasColumnOrder(7)
             .IsRequired();
         
-        builder.HasOne(a => a.Artist)
-            .WithMany(art => art.Albums)
-            .HasForeignKey(a => a.ArtistId)
-            .OnDelete(DeleteBehavior.NoAction);
+        builder.Property(a => a.ImageId)
+            .HasColumnType("bigint")
+            .HasColumnName("image_id")
+            .HasColumnOrder(8)
+            .IsRequired();
         
         builder.HasMany(a => a.Musics)
-            .WithOne()
+            .WithOne(m => m.Album)
             .HasForeignKey(m => m.AlbumId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        builder.HasOne(a => a.Image)
+            .WithOne()
+            .HasForeignKey<Album>(a => a.ImageId)
             .OnDelete(DeleteBehavior.Cascade);
     }
 }

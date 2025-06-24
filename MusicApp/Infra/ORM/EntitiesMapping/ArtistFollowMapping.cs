@@ -18,7 +18,7 @@ public class ArtistFollowMapping : BaseMapping, IEntityTypeConfiguration<ArtistF
             .HasColumnOrder(1);
         
         builder.Property(f => f.UserId)
-            .HasColumnType("bigint")
+            .HasColumnType("uniqueidentifier")
             .HasColumnName("user_id")
             .HasColumnOrder(2)
             .IsRequired();
@@ -28,15 +28,5 @@ public class ArtistFollowMapping : BaseMapping, IEntityTypeConfiguration<ArtistF
             .HasColumnName("follow_date")
             .HasColumnOrder(3)
             .IsRequired();
-        
-        builder.HasOne(f => f.Artist)
-            .WithMany(a => a.Follows)
-            .HasForeignKey(f => f.ArtistId)
-            .OnDelete(DeleteBehavior.NoAction);
-
-        builder.HasOne(f => f.User)
-            .WithMany(u => u.ArtistFollows)
-            .HasForeignKey(f => f.UserId)
-            .OnDelete(DeleteBehavior.NoAction);
     }
 }

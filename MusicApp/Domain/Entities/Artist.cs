@@ -6,6 +6,9 @@ public class Artist
     public required string Name { get; set; }
     public required DateTime JoinDate { get; init; }
 
-    public List<Album> Albums { get; set; } = [];
-    public List<ArtistFollow> Follows { get; set; } = [];
+    public long? ImageId { get; set; }
+    public Image? Image { get; set; }
+
+    public List<Album>? Albums { get; set; }
+    public List<ArtistFollow>? Follows { get; set; }
 }

@@ -1,3 +1,5 @@
+using LEGO.AsyncAPI;
+using LEGO.AsyncAPI.Models;
 using MusicApp.ApplicationService.DTOs.UserDtos.Request;
 using MusicApp.ApplicationService.Mappers.Interfaces;
 using MusicApp.ApplicationService.Services.Interfaces;

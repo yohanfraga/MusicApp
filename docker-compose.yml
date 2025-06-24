@@ -1,0 +1,6 @@
+﻿services:
+  musicapp:
+    image: musicapp
+    build:
+      context: .
+      dockerfile: MusicApp/Dockerfile

@@ -15,12 +15,15 @@ public class ArtistMapping : BaseMapping, IEntityTypeConfiguration<Artist>
         builder.Property(a => a.Id)
             .HasColumnType("bigint")
             .HasColumnName("id")
-            .HasColumnOrder(1);
+            .ValueGeneratedOnAdd()
+            .HasColumnOrder(1)
+            .IsRequired();
         
         builder.Property(a => a.Name)
-            .HasColumnType("varchar(200)")
+            .HasColumnType("nvarchar(255)")
             .HasColumnName("name")
             .HasColumnOrder(2)
+            .IsUnicode()
             .IsRequired();
         
         builder.Property(a => a.JoinDate)
@@ -29,14 +32,25 @@ public class ArtistMapping : BaseMapping, IEntityTypeConfiguration<Artist>
             .HasColumnOrder(3)
             .IsRequired();
         
+        builder.Property(a => a.ImageId)
+            .HasColumnType("bigint")
+            .HasColumnName("image_id")
+            .HasColumnOrder(4)
+            .IsRequired();
+        
         builder.HasMany(a => a.Albums)
-            .WithOne()
+            .WithOne(al => al.Artist)
             .HasForeignKey(al => al.ArtistId)
             .OnDelete(DeleteBehavior.Cascade);
         
         builder.HasMany(a => a.Follows)
-            .WithOne()
+            .WithOne(f => f.Artist)
             .HasForeignKey(f => f.ArtistId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        builder.HasOne(a => a.Image)
+            .WithOne()
+            .HasForeignKey<Artist>(a => a.ImageId)
             .OnDelete(DeleteBehavior.Cascade);
     }
 }
