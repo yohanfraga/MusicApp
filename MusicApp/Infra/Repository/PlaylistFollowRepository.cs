@@ -4,10 +4,15 @@ using Microsoft.EntityFrameworkCore.Query;
 using MusicApp.Domain.Entities;
 using MusicApp.Infra.Context;
 using MusicApp.Infra.Interfaces;
+using MusicApp.Domain.Handler.Pagination;
+using MusicApp.Domain.Handler.Pagination.Params;
+using MusicApp.Infra.Interfaces.Pagination;
 
 namespace MusicApp.Infra.Repository;
 
-public class PlaylistFollowRepository(ApplicationContext dbContext) 
+public class PlaylistFollowRepository(
+    ApplicationContext dbContext,
+    IPaginationQueryService<PlaylistFollow> paginationQueryService)
     : BaseRepository<PlaylistFollow>(dbContext), IPlaylistFollowRepository
 {
     private const int StandardQuantity = 1;
@@ -58,5 +63,36 @@ public class PlaylistFollowRepository(ApplicationContext dbContext)
             query = query.Where(predicate);
         
         return query.ToListAsync();
+    }
+
+    public async Task<PageList<PlaylistFollow>> FindAllWithPaginationAsync(
+        PlaylistFollowPageParams pageParams,
+        Expression<Func<PlaylistFollow, bool>>? predicate = null,
+        Func<IQueryable<PlaylistFollow>, IIncludableQueryable<PlaylistFollow, object>>? include = null)
+    {
+        IQueryable<PlaylistFollow> query = DbSetContext;
+
+        if (predicate is not null)
+            query = query.Where(predicate);
+
+        if (include is not null)
+            query = include(query);
+
+        query = FilterPagination(query, pageParams);
+
+        return await paginationQueryService.CreatePaginationAsync(query, pageParams.PageSize, pageParams.PageNumber);
+    }
+
+    private IQueryable<PlaylistFollow> FilterPagination(IQueryable<PlaylistFollow> query, PlaylistFollowPageParams pageParams)
+    {
+        if (pageParams.UserId is not null)
+            query = query.Where(pf => pf.UserId == pageParams.UserId);
+            
+        if (pageParams.PlaylistId is not null)
+            query = query.Where(pf => pf.PlaylistId == pageParams.PlaylistId);
+
+        query = query.OrderBy(pf => pf.FollowDate);
+
+        return query;
     }
 }

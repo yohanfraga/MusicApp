@@ -15,18 +15,23 @@ public class PlaylistMapping : BaseMapping, IEntityTypeConfiguration<Playlist>
         builder.Property(p => p.Id)
             .HasColumnType("bigint")
             .HasColumnName("id")
-            .HasColumnOrder(1);
+            .ValueGeneratedOnAdd()
+            .HasColumnOrder(1)
+            .IsRequired();
         
         builder.Property(p => p.Name)
-            .HasColumnType("varchar(200)")
+            .HasColumnType("nvarchar(256)")
             .HasColumnName("name")
             .HasColumnOrder(2)
+            .IsUnicode()
             .IsRequired();
         
         builder.Property(p => p.Description)
-            .HasColumnType("varchar(200)")
+            .HasColumnType("nvarchar(256)")
             .HasColumnName("description")
-            .HasColumnOrder(3);
+            .HasColumnOrder(3)
+            .IsUnicode()
+            .IsRequired(false);
         
         builder.Property(p => p.CreateDate)
             .HasColumnType("datetime2")
@@ -43,21 +48,28 @@ public class PlaylistMapping : BaseMapping, IEntityTypeConfiguration<Playlist>
         builder.Property(p => p.IsPublic)
             .HasColumnType("bit")
             .HasColumnName("is_public")
-            .HasColumnOrder(6);
+            .HasColumnOrder(6)
+            .IsRequired();
         
         builder.Property(p => p.UserId)
-            .HasColumnType("bigint")
+            .HasColumnType("uniqueidentifier")
             .HasColumnName("user_id")
-            .HasColumnOrder(7);
-        
-        builder.HasOne(p => p.User)
-            .WithMany(u => u.Playlists)
-            .HasForeignKey(p => p.UserId)
-            .OnDelete(DeleteBehavior.NoAction);
+            .HasColumnOrder(7)
+            .IsRequired();
         
         builder.HasMany(p => p.Musics)
-            .WithOne()
+            .WithOne(pm => pm.Playlist)
             .HasForeignKey(m => m.PlaylistId)
+            .OnDelete(DeleteBehavior.Cascade);
+        
+        builder.HasMany(p => p.Follows)
+            .WithOne(pf => pf.Playlist)
+            .HasForeignKey(pf => pf.PlaylistId)
+            .OnDelete(DeleteBehavior.Cascade);
+        
+        builder.HasOne(p => p.Image)
+            .WithOne()
+            .HasForeignKey<Playlist>(p => p.ImageId)
             .OnDelete(DeleteBehavior.Cascade);
     }
 }

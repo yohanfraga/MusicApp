@@ -2,12 +2,16 @@ using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Query;
 using MusicApp.Domain.Entities;
+using MusicApp.Domain.Handler.Pagination;
 using MusicApp.Infra.Context;
 using MusicApp.Infra.Interfaces;
+using MusicApp.Infra.Interfaces.Pagination;
 
 namespace MusicApp.Infra.Repository;
 
-public class AlbumRepository(ApplicationContext dbContext) 
+public class AlbumRepository(
+    ApplicationContext dbContext,
+    IPaginationQueryService<Album> paginationQueryService) 
     : BaseRepository<Album>(dbContext), IAlbumRepository
 {
     private const int StandardQuantity = 1;
@@ -65,5 +69,42 @@ public class AlbumRepository(ApplicationContext dbContext)
             query = query.Where(predicate);
         
         return query.ToListAsync();
+    }
+
+    public async Task<PageList<Album>> FindAllWithPaginationAsync(
+        AlbumPageParams pageParams,
+        Expression<Func<Album, bool>>? predicate = null,
+        Func<IQueryable<Album>, IIncludableQueryable<Album, object>>? include = null)
+    {
+        IQueryable<Album> query = DbSetContext;
+
+        if (predicate is not null)
+            query = query.Where(predicate);
+
+        if (include is not null)
+            query = include(query);
+
+        query = FilterPagination(query, pageParams);
+
+        return await paginationQueryService.CreatePaginationAsync(query, pageParams.PageSize, pageParams.PageNumber);
+    }
+
+    private IQueryable<Album> FilterPagination(IQueryable<Album> query, AlbumPageParams pageParams)
+    {
+        if (pageParams.Name is not null)
+            query = query.Where(a => a.Name.Contains(pageParams.Name));
+
+        if (pageParams.ArtistId is not null)
+            query = query.Where(a => a.ArtistId == pageParams.ArtistId);
+
+        if (pageParams.InitialDate is not null)
+            query = query.Where(a => a.ReleaseDate >= pageParams.InitialDate);
+        
+        if (pageParams.FinalDate is not null)
+            query = query.Where(a => a.ReleaseDate <= pageParams.FinalDate);
+
+        query = query.OrderBy(a => a.Id);
+
+        return query;
     }
 }

@@ -15,10 +15,11 @@ public class PlaylistFollowMapping : BaseMapping, IEntityTypeConfiguration<Playl
         builder.Property(f => f.PlaylistId)
             .HasColumnType("bigint")
             .HasColumnName("playlist_id")
-            .HasColumnOrder(1);
+            .HasColumnOrder(1)
+            .IsRequired();
         
         builder.Property(f => f.UserId)
-            .HasColumnType("bigint")
+            .HasColumnType("uniqueidentifier")
             .HasColumnName("user_id")
             .HasColumnOrder(2)
             .IsRequired();
@@ -28,15 +29,5 @@ public class PlaylistFollowMapping : BaseMapping, IEntityTypeConfiguration<Playl
             .HasColumnName("follow_date")
             .HasColumnOrder(3)
             .IsRequired();
-        
-        builder.HasOne(f => f.Playlist)
-            .WithMany(a => a.Follows)
-            .HasForeignKey(f => f.PlaylistId)
-            .OnDelete(DeleteBehavior.NoAction);
-
-        builder.HasOne(f => f.User)
-            .WithMany(u => u.PlaylistFollows)
-            .HasForeignKey(f => f.UserId)
-            .OnDelete(DeleteBehavior.NoAction);
     }
 }

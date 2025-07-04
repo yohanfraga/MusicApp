@@ -14,7 +14,7 @@ public class Album
     public required long ArtistId { get; init; }
     public Artist? Artist { get; init; }
 
-    public long? ImageId { get; set; }
+    public required long ImageId { get; set; }
     public Image? Image { get; set; }
 
     public List<Music>? Musics { get; init; }

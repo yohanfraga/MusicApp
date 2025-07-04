@@ -4,10 +4,15 @@ using Microsoft.EntityFrameworkCore.Query;
 using MusicApp.Domain.Entities;
 using MusicApp.Infra.Context;
 using MusicApp.Infra.Interfaces;
+using MusicApp.Domain.Handler.Pagination;
+using MusicApp.Domain.Handler.Pagination.Params;
+using MusicApp.Infra.Interfaces.Pagination;
 
 namespace MusicApp.Infra.Repository;
 
-public class MusicRepository(ApplicationContext dbContext) 
+public class MusicRepository(
+    ApplicationContext dbContext,
+    IPaginationQueryService<Music> paginationQueryService) 
     : BaseRepository<Music>(dbContext), IMusicRepository
 {
     private const int StandardQuantity = 1;
@@ -65,5 +70,36 @@ public class MusicRepository(ApplicationContext dbContext)
             query = query.Where(predicate);
         
         return query.ToListAsync();
+    }
+
+    public async Task<PageList<Music>> FindAllWithPaginationAsync(
+        MusicPageParams pageParams,
+        Expression<Func<Music, bool>>? predicate = null,
+        Func<IQueryable<Music>, IIncludableQueryable<Music, object>>? include = null)
+    {
+        IQueryable<Music> query = DbSetContext;
+
+        if (predicate is not null)
+            query = query.Where(predicate);
+
+        if (include is not null)
+            query = include(query);
+
+        query = FilterPagination(query, pageParams);
+
+        return await paginationQueryService.CreatePaginationAsync(query, pageParams.PageSize, pageParams.PageNumber);
+    }
+
+    private IQueryable<Music> FilterPagination(IQueryable<Music> query, MusicPageParams pageParams)
+    {
+        if (pageParams.Name is not null)
+            query = query.Where(m => m.Name.Contains(pageParams.Name));
+        
+        if (pageParams.AlbumId is not null)
+            query = query.Where(m => m.AlbumId == pageParams.AlbumId);
+
+        query = query.OrderBy(m => m.Id);
+
+        return query;
     }
 }

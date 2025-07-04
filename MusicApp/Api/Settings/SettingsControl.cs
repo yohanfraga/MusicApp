@@ -6,6 +6,7 @@ public static class SettingsControl
 {
     public static void AddSettingsControl(this IServiceCollection services, IConfiguration configuration)
     {
+        services.AddIdentitySettings();
         services.AddOptionSettings(configuration);
         services.AddControllersSettings();
         services.AddFiltersSettings();

@@ -19,4 +19,10 @@ public abstract class BaseRepository<T>(
 
     protected async Task<bool> SaveInDatabaseAsync(CancellationToken cancellationToken = default) =>
         await dbContext.SaveChangesAsync(cancellationToken) > StandardQuantity;
+
+    protected void DetachedObject(T entity)
+    {
+        if (dbContext.Entry(entity).State == EntityState.Detached)
+            DbSetContext.Attach(entity);
+    }
 }

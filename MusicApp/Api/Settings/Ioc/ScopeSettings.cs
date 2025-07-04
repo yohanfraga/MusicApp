@@ -14,8 +14,10 @@ public static class ScopeSettings
             .AddScoped<ApplicationContext>()
             .AddScoped<INotificationHandler, NotificationHandler>()
             .AddScoped<IUnitOfWork, UnitOfWork>()
+            .AddPaginationContainer()
             .AddRepositoryContainer()
             .AddValidationContainer()
             .AddMapperContainer()
-            .AddServiceContainer();
+            .AddServiceContainer()
+            ;
 }

@@ -3,7 +3,7 @@ namespace MusicApp.Domain.Entities;
 public class ArtistFollow
 {
     public required long ArtistId { get; set; }
-    public required long UserId { get; set; }
+    public required Guid UserId { get; set; }
     public required DateTime FollowDate { get; init; }
     
     public Artist? Artist { get; set; }

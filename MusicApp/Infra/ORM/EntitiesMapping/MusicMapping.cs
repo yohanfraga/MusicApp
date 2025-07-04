@@ -15,12 +15,15 @@ public class MusicMapping : BaseMapping, IEntityTypeConfiguration<Music>
         builder.Property(m => m.Id)
             .HasColumnType("bigint")
             .HasColumnName("id")
-            .HasColumnOrder(1);
+            .ValueGeneratedOnAdd()
+            .HasColumnOrder(1)
+            .IsRequired();
         
         builder.Property(m => m.Name)
-            .HasColumnType("varchar(200)")
+            .HasColumnType("nvarchar(256)")
             .HasColumnName("name")
             .HasColumnOrder(2)
+            .IsUnicode()
             .IsRequired();
         
         builder.Property(m => m.Duration)
@@ -40,18 +43,13 @@ public class MusicMapping : BaseMapping, IEntityTypeConfiguration<Music>
             .HasColumnOrder(5)
             .IsRequired();
         
-        builder.HasOne(m => m.Album)
-            .WithMany(a => a.Musics)
-            .HasForeignKey(m => m.AlbumId)
-            .OnDelete(DeleteBehavior.NoAction);
-        
         builder.HasMany(m => m.Likes)
-            .WithOne()
+            .WithOne(l => l.Music)
             .HasForeignKey(l => l.MusicId)
             .OnDelete(DeleteBehavior.Cascade);
         
         builder.HasMany(m => m.Playlists)
-            .WithOne()
+            .WithOne(pm => pm.Music)
             .HasForeignKey(pm => pm.MusicId)
             .OnDelete(DeleteBehavior.Cascade);
     }

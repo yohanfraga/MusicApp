@@ -1,6 +1,8 @@
 using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore.Query;
 using MusicApp.Domain.Entities;
+using MusicApp.Domain.Handler.Pagination;
+using MusicApp.Domain.Handler.Pagination.Params;
 
 namespace MusicApp.Infra.Interfaces;
 
@@ -17,4 +19,9 @@ public interface ILikeRepository
         Expression<Func<Like, bool>> predicate,
         Func<IQueryable<Like>, IIncludableQueryable<Like, object>>? include,
         bool asNoTracking = false);
+
+    Task<PageList<Like>> FindAllWithPaginationAsync(
+        LikePageParams pageParams,
+        Expression<Func<Like, bool>>? predicate = null,
+        Func<IQueryable<Like>, IIncludableQueryable<Like, object>>? include = null);
 }

@@ -15,7 +15,8 @@ public class PlaylistMusicMapping : BaseMapping, IEntityTypeConfiguration<Playli
         builder.Property(pm => pm.MusicId)
             .HasColumnType("bigint")
             .HasColumnName("music_id")
-            .HasColumnOrder(1);
+            .HasColumnOrder(1)
+            .IsRequired();
         
         builder.Property(pm => pm.PlaylistId)
             .HasColumnType("bigint")
@@ -28,15 +29,5 @@ public class PlaylistMusicMapping : BaseMapping, IEntityTypeConfiguration<Playli
             .HasColumnName("added_date")
             .HasColumnOrder(3)
             .IsRequired();
-        
-        builder.HasOne(pm => pm.Music)
-            .WithMany(m => m.Playlists)
-            .HasForeignKey(pm => pm.MusicId)
-            .OnDelete(DeleteBehavior.NoAction);
-
-        builder.HasOne(pm => pm.Playlist)
-            .WithMany(p => p.Musics)
-            .HasForeignKey(pm => pm.PlaylistId)
-            .OnDelete(DeleteBehavior.NoAction);
     }
 }

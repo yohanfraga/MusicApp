@@ -11,10 +11,10 @@ public class Music
     public required long AlbumId { get; set; }
     public Album? Album { get; set; }
 
-    public long? ImageId { get; set; }
+    public required long ImageId { get; set; }
     public Image? Image { get; set; }
 
-    public long? AudioId { get; set; }
+    public required long AudioId { get; set; }
     public Audio? Audio { get; set; }
     
     public List<Like>? Likes { get; set; }

@@ -24,6 +24,8 @@ public sealed class UserCommandService(
 
         if (!await ValidateEntityAsync(user)) return false;
 
-        return await userRepository.SaveAsync(user);
+        var result = await userRepository.SaveAsync(user);
+
+        return result.Succeeded;
     }
 }

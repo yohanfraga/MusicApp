@@ -107,29 +107,38 @@ public class UserMapping : BaseMapping, IEntityTypeConfiguration<User>
             .HasColumnOrder(18);
         
         builder.HasMany(u => u.Playlists)
-            .WithOne()
+            .WithOne(p => p.User)
             .HasForeignKey(p => p.UserId)
             .OnDelete(DeleteBehavior.Cascade);
         
         builder.HasMany(u => u.Likes)
-            .WithOne()
+            .WithOne(l => l.User)
             .HasForeignKey(l => l.UserId)
             .OnDelete(DeleteBehavior.Cascade);
         
         builder.HasMany(u => u.ArtistFollows)
-            .WithOne()
+            .WithOne(af => af.User)
             .HasForeignKey(af => af.UserId)
             .OnDelete(DeleteBehavior.Cascade);
         
         builder.HasMany(u => u.PlaylistFollows)
-            .WithOne()
+            .WithOne(pf => pf.User)
             .HasForeignKey(pf => pf.UserId)
             .OnDelete(DeleteBehavior.Cascade);
 
-        // Identity-friendly: map UserRoles many-to-many join
         builder.HasMany(u => u.UserRoles)
             .WithOne(ur => ur.User)
             .HasForeignKey(ur => ur.UserId)
-            .IsRequired();
+            .OnDelete(DeleteBehavior.Cascade);
+        
+        builder.HasOne(u => u.Image)
+            .WithOne()
+            .HasForeignKey<User>(u => u.ImageId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        builder.HasMany(u => u.UserTokens)
+            .WithOne(ut => ut.User)
+            .HasForeignKey(ut => ut.UserId)
+            .OnDelete(DeleteBehavior.Cascade);
     }
 }
